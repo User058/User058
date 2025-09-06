@@ -42,8 +42,8 @@ main_slowdns_menu() {
             nameserver="Not configured"
         fi
         
-        if [ -f "/etc/AutoScriptX/slowdns-domain" ]; then
-            subdomain=$(cat /etc/AutoScriptX/slowdns-domain)
+        if [ -f "/etc/xvpn/slowdns-domain" ]; then
+            subdomain=$(cat /etc/xvpn/slowdns-domain)
         else
             subdomain="Not configured"
         fi
