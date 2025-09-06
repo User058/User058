@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DOMAIN_FILE="/etc/AutoScriptX/domain"
-PORT_INFO="/etc/AutoScriptX/port-info.json"
+DOMAIN_FILE="/etc/xvpn/domain"
+PORT_INFO="/etc/xvpn/port-info.json"
 
 gum format --theme dracula --type markdown "# 🛠️ Create SSH Account"
 
