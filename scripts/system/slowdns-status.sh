@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# SlowDNS Server Status Check for AutoScriptX
+# SlowDNS Server Status Check for xvpn
 
 # Color definitions
 green="\033[0;32m"
@@ -43,8 +43,8 @@ else
     echo -e "❌ Nameserver: ${red}Not configured${nc}"
 fi
 
-if [ -f "/etc/AutoScriptX/slowdns-domain" ]; then
-    subdomain=$(cat /etc/AutoScriptX/slowdns-domain)
+if [ -f "/etc/xvpn/slowdns-domain" ]; then
+    subdomain=$(cat /etc/xvpn/slowdns-domain)
     echo -e "🔗 Subdomain: ${green}$subdomain${nc}"
 else
     echo -e "❌ Subdomain: ${red}Not configured${nc}"
@@ -96,8 +96,8 @@ fi
 echo ""
 echo "📝 Required DNS Configuration:"
 echo "==============================="
-if [ -f "/etc/AutoScriptX/slowdns-domain" ] && [ -f "/root/nsdomain" ]; then
-    subdomain=$(cat /etc/AutoScriptX/slowdns-domain)
+if [ -f "/etc/xvpn/slowdns-domain" ] && [ -f "/root/nsdomain" ]; then
+    subdomain=$(cat /etc/xvpn/slowdns-domain)
     nameserver=$(cat /root/nsdomain)
     public_ip=$(curl -s ifconfig.me 2>/dev/null || echo "Unable to get IP")
     echo -e "${yellow}A record:${nc}  $subdomain → $public_ip"
