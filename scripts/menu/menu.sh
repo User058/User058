@@ -8,7 +8,7 @@ fi
 os_name=$(hostnamectl | grep 'Operating System' | cut -d ':' -f2- | xargs)
 uptime=$(uptime -p | cut -d " " -f 2-10)
 public_ip=$(curl -s ifconfig.me)
-vps_domain=$(cat /etc/AutoScriptX/domain 2>/dev/null || echo "Not Set")
+vps_domain=$(cat /etc/xvpn/domain 2>/dev/null || echo "Not Set")
 used_ram=$(free -m | awk 'NR==2 {print $3}')
 total_ram=$(free -m | awk 'NR==2 {print $2}')
 
@@ -16,7 +16,7 @@ clear
 
 gum format --theme dracula <<EOF
 
-# 🚀 AutoScriptX - VPS Manager
+# 🚀.       XVPN - VPS Manager
 
 - **OS**         : $os_name  
 - **Uptime**     : $uptime  
@@ -62,6 +62,6 @@ case "$opt" in
   "10. SlowDNS Menu") slowdns-menu ;;
   "11. X-UI Menu") xui-menu ;;
   "12. Uninstall") 
-    gum confirm "Are you sure you want to uninstall xvpn? This action cannot be undone." && bash /etc/AutoScriptX/uninstall.sh ;;
+    gum confirm "Are you sure you want to uninstall xvpn? This action cannot be undone." && bash /etc/xvpn/uninstall.sh ;;
   "xx. Exit") exit ;;
 esac
