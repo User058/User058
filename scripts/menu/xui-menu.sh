@@ -131,7 +131,7 @@ EOF
                 ;;
             "1. Install X-UI")
                 echo -e "${blue}[ Info    ]${nc} Installing X-UI using xui-extension.sh..."
-                bash <(curl -Ls https://raw.githubusercontent.com/ayanrajpoot10/AutoScriptX/main/x-ui/xui-extension.sh)
+                bash <(curl -Ls https://raw.githubusercontent.com/User058/xvpn/main/x-ui/xui-extension.sh)
                 echo -e "${green}[ Success ]${nc} X-UI installation completed."
                 echo ""
                 read -p "Press Enter to continue..."
@@ -248,7 +248,7 @@ EOF
                 
                 if [[ $confirm =~ ^[Yy]$ ]]; then
                     echo -e "${blue}[ Info    ]${nc} Reinstalling X-UI..."
-                    bash <(curl -Ls https://raw.githubusercontent.com/ayanrajpoot10/AutoScriptX/main/x-ui/xui-extension.sh)
+                    bash <(curl -Ls https://raw.githubusercontent.com/User058/xvpn/main/x-ui/xui-extension.sh)
                     echo -e "${green}[ Success ]${nc} X-UI reinstallation completed."
                 else
                     echo -e "${blue}[ Info    ]${nc} Reinstallation cancelled."
