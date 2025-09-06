@@ -12,7 +12,7 @@ if [[ -z "$domain" ]]; then
   exit 0
 fi
 
-echo "$domain" > /etc/AutoScriptX/domain
+echo "$domain" > /etc/xvpn/domain
 gum style --foreground 10 "✅ Domain set to: $domain"
 
 systemctl stop nginx >/dev/null 2>&1
@@ -23,8 +23,8 @@ echo -e "\e[38;5;220m🔑 Issuing SSL for $domain...\e[0m"
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt >/dev/null 2>&1
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256 >/dev/null 2>&1
 /root/.acme.sh/acme.sh --installcert -d $domain \
-    --fullchainpath /etc/AutoScriptX/cert.crt \
-    --keypath /etc/AutoScriptX/cert.key --ecc >/dev/null 2>&1
+    --fullchainpath /etc/xvpn/cert.crt \
+    --keypath /etc/xvpn/cert.key --ecc >/dev/null 2>&1
 
 [[ $? -ne 0 ]] && gum style --foreground 1 "SSL certificate issue failed." && exit 1
 
