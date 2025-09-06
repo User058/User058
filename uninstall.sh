@@ -19,12 +19,12 @@ fi
 clear
 
 echo "-----------------------------"
-echo "  Uninstalling AutoScriptX  "
+echo "      Uninstalling XVPN.     "
 echo "-----------------------------"
 
 log_info "Stopping and disabling services..."
 
-# Stop and disable all AutoScriptX services
+# Stop and disable all xvpn services
 services=(
   dropbear
   ws-proxy.service
@@ -51,8 +51,8 @@ pkill -f ws-proxy > /dev/null 2>&1 || true
 
 log_info "Removing installed files and configurations..."
 
-# Remove main AutoScriptX directory
-rm -rf /etc/AutoScriptX
+# Remove main xvpn directory
+rm -rf /etc/xvpn
 
 # Remove SSL certificates and acme.sh
 rm -rf /root/.acme.sh
@@ -62,7 +62,7 @@ rm -f /etc/stunnel/stunnel.{conf,pem} /etc/stunnel/{key.pem,cert.pem}
 
 # Remove dropbear configuration
 rm -f /etc/default/dropbear
-sed -i '/AutoScriptX\/banner/d' /etc/default/dropbear 2>/dev/null
+sed -i '/xvpn\/banner/d' /etc/default/dropbear 2>/dev/null
 
 # Remove systemd service files
 rm -f /etc/systemd/system/ws-proxy.service
@@ -83,7 +83,7 @@ rm -f /etc/squid/squid.conf
 rm -f /etc/cron.d/auto-reboot /etc/cron.d/clean-expired-accounts
 
 # Remove scripts
-for cmd in autoscriptx asx menu create-account delete-account edit-banner edit-response \
+for cmd in xvpn asx menu create-account delete-account edit-banner edit-response \
             lock-unlock renew-account change-domain manage-services system-info clean-expired-accounts; do
   rm -f /usr/bin/$cmd
 done
@@ -150,5 +150,5 @@ log_info "Restarting remaining services..."
 # Restart cron to reload without AutoScriptX jobs
 service cron restart > /dev/null 2>&1 || log_warning "Failed to restart cron"
 
-log_success "AutoScriptX uninstalled successfully."
+log_success "xvpn uninstalled successfully."
 log_info "System has been restored to its previous state."
