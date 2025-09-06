@@ -1,0 +1,16 @@
+[Unit]
+Description=SSH Over Websocket (Go Proxy)
+Documentation=https://github.com/ayanrajpoot10/AutoScriptX
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+Restart=on-failure
+ExecStart=/usr/local/bin/ws-proxy --res "<b><font color="yellow"> User058 </font></b>\r\n\r\nContent-Length: 104857600000\r\n\r\n"
+
+[Install]
+WantedBy=multi-user.target
