@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BANNER_FILE="/etc/AutoScriptX/banner"
+BANNER_FILE="/etc/xvpn/banner"
 
 sudo cp "$BANNER_FILE" "${BANNER_FILE}.bak"
 
