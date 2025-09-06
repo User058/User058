@@ -44,7 +44,7 @@ setup_hosts() {
 
 # Setup domain configuration
 setup_domain() {
-    mkdir -p /etc/AutoScriptX
+    mkdir -p /etc/xvpn
     clear
     echo "---------------------------"
     echo "      VPS DOMAIN SETUP     "
