@@ -131,8 +131,8 @@ configure_dropbear() {
     log_info "Configuring Dropbear..."
     wget -qO /etc/default/dropbear "$BASE_URL/config/dropbear.conf" || log_error "Failed to download dropbear.conf."
     chmod 644 /etc/default/dropbear
-    wget -qO /etc/AutoScriptX/banner "$BASE_URL/config/banner.conf" || log_warning "Failed to download Dropbear banner."
-    chmod 644 /etc/AutoScriptX/banner
+    wget -qO /etc/xvpn/banner "$BASE_URL/config/banner.conf" || log_warning "Failed to download Dropbear banner."
+    chmod 644 /etc/xvpn/banner
     echo -e "/bin/false\n/usr/sbin/nologin" >> /etc/shells
     systemctl daemon-reload > /dev/null 2>&1
     systemctl enable dropbear > /dev/null 2>&1
@@ -161,7 +161,7 @@ setup_ssl_cert() {
     # Clean up previous certs and acme.sh install for idempotency
     systemctl stop nginx > /dev/null 2>&1
     rm -rf /root/.acme.sh
-    rm -f /etc/AutoScriptX/cert.crt /etc/AutoScriptX/cert.key
+    rm -f /etc/xvpn/cert.crt /etc/xvpn/cert.key
     mkdir -p /root/.acme.sh
     curl -s https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh || log_error "Failed to download acme.sh."
     chmod +x /root/.acme.sh/acme.sh
@@ -169,8 +169,8 @@ setup_ssl_cert() {
     /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt > /dev/null 2>&1
     /root/.acme.sh/acme.sh --issue -d "$domain" --standalone -k ec-256 > /dev/null 2>&1 || log_error "acme.sh certificate issue failed."
     /root/.acme.sh/acme.sh --installcert -d "$domain" \
-      --fullchainpath /etc/AutoScriptX/cert.crt \
-      --keypath /etc/AutoScriptX/cert.key --ecc > /dev/null 2>&1 || log_error "acme.sh certificate install failed."
+      --fullchainpath /etc/xvpn/cert.crt \
+      --keypath /etc/xvpn/cert.key --ecc > /dev/null 2>&1 || log_error "acme.sh certificate install failed."
     log_success "SSL cert installed."
 }
 
@@ -287,9 +287,9 @@ install_scripts() {
       done
     done
     
-    # Install uninstall script to AutoScriptX directory
-    wget -qO /etc/AutoScriptX/uninstall.sh "$BASE_URL/uninstall.sh" > /dev/null 2>&1 || log_warning "Failed to download uninstall.sh."
-    chmod +x /etc/AutoScriptX/uninstall.sh
+    # Install uninstall script to xvpn directory
+    wget -qO /etc/xvpn/uninstall.sh "$BASE_URL/uninstall.sh" > /dev/null 2>&1 || log_warning "Failed to download uninstall.sh."
+    chmod +x /etc/xvpn/uninstall.sh
     
     log_success "Scripts installed."
 }
@@ -310,7 +310,7 @@ final_cleanup() {
     history -c && echo "unset HISTFILE" >> /etc/profile
     
     # Create symbolic links
-    for link in autoscriptx asx; do
+    for link in xvpn asx; do
       ln -sf /usr/bin/menu /usr/bin/$link
       chmod +x /usr/bin/$link
     done
