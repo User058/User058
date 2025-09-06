@@ -41,9 +41,7 @@ Follow the prompts to set your domain and complete the setup.
 After installation, launch the main menu with either command:
 
 ```bash
-autoscriptx
-# or
-asx
+menu
 ```
 
 ### Menu Options
