@@ -43,7 +43,7 @@ get_slowdns_domain() {
     log_info "Configuring SlowDNS domain settings..."
     
     # Clean up any existing domain configuration
-    rm -rf /root/nsdomain /etc/AutoScriptX/slowdns-domain 2>/dev/null
+    rm -rf /root/nsdomain /etc/xvpn/slowdns-domain 2>/dev/null
     
     clear
     echo "=================================="
@@ -68,7 +68,7 @@ get_slowdns_domain() {
     
     # Save domain configuration
     echo "$NS_DOMAIN" > /root/nsdomain
-    echo "$SUB_DOMAIN" > /etc/AutoScriptX/slowdns-domain
+    echo "$SUB_DOMAIN" > /etc/xvpn/slowdns-domain
     
     log_success "SlowDNS domain configured: $NS_DOMAIN"
 }
@@ -134,8 +134,8 @@ setup_slowdns_files() {
     rm -rf /etc/slowdns
     mkdir -m 777 /etc/slowdns
     
-    # Download SlowDNS server binary from AutoScriptX repository
-    wget -q -O /etc/slowdns/dns-server "https://raw.githubusercontent.com/ayanrajpoot10/AutoScriptX/main/bin/dns-server" || {
+    # Download SlowDNS server binary from xvpn repository
+    wget -q -O /etc/slowdns/dns-server "https://raw.githubusercontent.com/User058/xvpn/main/bin/dns-server" || {
         log_error "Failed to download dns-server binary"
         exit 1
     }
@@ -149,7 +149,7 @@ setup_slowdns_files() {
     
     # Generate server certificate (server.pem)
     log_info "Generating server certificate..."
-    openssl req -new -x509 -key /etc/slowdns/server.key -out /etc/slowdns/server.pem -days 365 -subj "/C=US/ST=State/L=City/O=AutoScriptX/CN=slowdns-server" || {
+    openssl req -new -x509 -key /etc/slowdns/server.key -out /etc/slowdns/server.pem -days 365 -subj "/C=US/ST=State/L=City/O=xvpn/CN=slowdns-server" || {
         log_error "Failed to generate server certificate"
         exit 1
     }
@@ -178,8 +178,8 @@ create_slowdns_services() {
     # Create server service only
     cat > /etc/systemd/system/server-sldns.service << EOF
 [Unit]
-Description=Server SlowDNS By AutoScriptX
-Documentation=https://github.com/ayanrajpoot10/AutoScriptX
+Description=Server SlowDNS By xvpn
+Documentation=https://github.com/User058/xvpn
 After=network.target nss-lookup.target
 
 [Service]
@@ -245,8 +245,8 @@ else
     echo "❌ Nameserver: Not configured"
 fi
 
-if [ -f "/etc/AutoScriptX/slowdns-domain" ]; then
-    subdomain=$(cat /etc/AutoScriptX/slowdns-domain)
+if [ -f "/etc/xvpn/slowdns-domain" ]; then
+    subdomain=$(cat /etc/xvpn/slowdns-domain)
     echo "🔗 Subdomain: $subdomain"
 else
     echo "❌ Subdomain: Not configured"
@@ -290,7 +290,7 @@ EOF
 main() {
     clear
     echo "=========================================="
-    echo "  AutoScriptX - SlowDNS Server Setup     "
+    echo "  XVPN - SlowDNS Server Setup     "
     echo "=========================================="
     echo ""
     
@@ -317,7 +317,7 @@ main() {
     echo "📋 Configuration Summary:"
     echo "========================="
     nameserver=$(cat /root/nsdomain)
-    subdomain=$(cat /etc/AutoScriptX/slowdns-domain)
+    subdomain=$(cat /etc/xvpn/slowdns-domain)
     echo "🌐 Nameserver: $nameserver"
     echo "🔗 Subdomain: $subdomain"
     echo "🚪 SSH Ports: 22, 2222, 2269"
