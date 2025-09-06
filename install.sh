@@ -8,7 +8,7 @@ yellow="\033[1;33m"
 nc="\033[0m"
 
 # Configuration
-BASE_URL="https://raw.githubusercontent.com/ayanrajpoot10/AutoScriptX/master"
+BASE_URL="https://raw.githubusercontent.com/User058/xvpn/master"
 export DEBIAN_FRONTEND=noninteractive
 
 # Global variables
@@ -55,7 +55,7 @@ setup_domain() {
         log_error "Domain cannot be empty."
         exit 1
     fi
-    if echo "$domain" > /etc/AutoScriptX/domain; then
+    if echo "$domain" > /etc/xvpn/domain; then
         log_success "Domain saved."
     else
         log_error "Failed to save domain."
@@ -349,7 +349,7 @@ main() {
     
     # Installation complete
     log_success "Installation complete."
-    log_success "Run '${green}autoscriptx${nc}' or '${green}asx${nc}' to start."
+    log_success "Run '${green}menu${nc} to start."
 }
 
 # Execute main function
