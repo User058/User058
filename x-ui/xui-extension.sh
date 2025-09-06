@@ -32,7 +32,7 @@ apt-get update >/dev/null 2>&1
 apt-get install -y sqlite3 jq inotify-tools nginx wget >/dev/null 2>&1
 
 
-BASE_URL="https://raw.githubusercontent.com/ayanrajpoot10/AutoScriptX/master/x-ui"
+BASE_URL="https://raw.githubusercontent.com/User058/xvpn/master/x-ui"
 log_info "Downloading scripts..."
 wget -O /usr/bin/add-location.sh "$BASE_URL/add-location.sh" >/dev/null 2>&1
 wget -O /usr/bin/xui-watcher.sh "$BASE_URL/xui-watcher.sh" >/dev/null 2>&1
@@ -44,8 +44,8 @@ wget -O /etc/systemd/system/xui-watcher.service "$BASE_URL/xui-watcher.service" 
 
 
 mkdir -p /etc/nginx/locations >/dev/null 2>&1
-mkdir -p /etc/AutoScriptX >/dev/null 2>&1
-touch /etc/AutoScriptX/xray_paths.txt >/dev/null 2>&1
+mkdir -p /etc/xvpn >/dev/null 2>&1
+touch /etc/xvpn/xray_paths.txt >/dev/null 2>&1
 
 
 systemctl daemon-reload >/dev/null 2>&1
