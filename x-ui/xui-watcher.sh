@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DB_PATH="/etc/x-ui/x-ui.db"
-STATE_FILE="/etc/AutoScriptX/xray_paths.txt"
+STATE_FILE="/etc/xvpn/xray_paths.txt"
 LOCATION_DIR="/etc/nginx/locations"
 ADD_SCRIPT="/usr/bin/add-location.sh"
 
