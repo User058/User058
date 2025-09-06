@@ -1,4 +1,4 @@
-https://raw.githubusercontent.com/User058/User058/main/install.## Features
+Features
 
 - **Automated Installation**: One-command setup for all dependencies and configurations.
 - **SSH & WebSocket Management**: Create, renew, lock/unlock, and delete SSH accounts with WebSocket and SSL support.
@@ -28,7 +28,7 @@ https://raw.githubusercontent.com/User058/User058/main/install.## Features
 Then install AutoScriptX with:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/User058/User058/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/User058/xvpn/main/install.sh)
 ```
 
 Follow the prompts to set your domain and complete the setup.
