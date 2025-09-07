@@ -76,7 +76,7 @@ update_system() {
     apt autoremove -y > /dev/null 2>&1 && apt autoclean -y > /dev/null 2>&1
     log_success "System updated."
 }
-# configure .profile
+# configure profile
 configure_profile() {
 	log_info "Configuring Profile..."
 cat> /root/.profile << END
