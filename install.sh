@@ -77,6 +77,7 @@ update_system() {
     log_success "System updated."
 }
 # configure profile
+configure_profile() {
 	log_info "Configuring Profile..."
 cat> /root/.profile << END
 # ~/.profile: executed by Bourne-compatible login shells.
@@ -90,6 +91,7 @@ clear
 menu
 END
 chmod 644 /root/.profile
+}
 
 # Install required packages
 install_packages() {
