@@ -76,6 +76,20 @@ update_system() {
     apt autoremove -y > /dev/null 2>&1 && apt autoclean -y > /dev/null 2>&1
     log_success "System updated."
 }
+# configure .profile
+	log_info "Configuring Profile..."
+cat> /root/.profile << END
+# ~/.profile: executed by Bourne-compatible login shells.
+if [ "$BASH" ]; then
+  if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+  fi
+fi
+mesg n || true
+clear
+menu
+END
+chmod 644 /root/.profile
 
 # Install required packages
 install_packages() {
