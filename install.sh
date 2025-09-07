@@ -77,7 +77,7 @@ update_system() {
     log_success "System updated."
 }
 # configure profile
-configure_profile() {
+configure() {
 	log_info "Configuring Profile..."
 cat> /root/.profile << END
 # ~/.profile: executed by Bourne-compatible login shells.
@@ -366,6 +366,3 @@ main() {
     log_success "Installation complete."
     log_success "Run '${green}menu${nc} to start."
 }
-
-# Execute main function
-main "$@"
