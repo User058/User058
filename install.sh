@@ -91,6 +91,7 @@ clear
 menu
 END
 chmod 644 /root/.profile
+    log_success "profile updated."
 }
 
 # Install required packages
