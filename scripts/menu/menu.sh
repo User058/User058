@@ -16,7 +16,7 @@ clear
 
 gum format --theme dracula <<EOF
 
-# 🚀.  XVPN - VPS Manager
+#     🚀. XVPN - VPS Manager
 
 - **OS**         : $os_name  
 - **Uptime**     : $uptime  
